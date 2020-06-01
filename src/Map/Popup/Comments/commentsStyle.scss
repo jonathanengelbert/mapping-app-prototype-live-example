@@ -5,9 +5,13 @@ h3 {
 }
 
 .comment-list {
-  overflow-y: scroll;
   position: relative;
   height: 50%;
+  overflow: hidden;
+
+  &:hover {
+    overflow-y: scroll;
+  }
 
 }
 

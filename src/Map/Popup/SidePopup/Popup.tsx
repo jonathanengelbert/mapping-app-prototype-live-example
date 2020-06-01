@@ -32,4 +32,4 @@ const SidePopup = (props: Props) => {
     return null;
 };
 
-export default SidePopup;
+export default React.memo(SidePopup);
