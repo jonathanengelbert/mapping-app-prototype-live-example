@@ -22,3 +22,12 @@ export const getLayer: Function = async (url: string, id: string, setter: Functi
     return processing;
 };
 
+// COMMENTS HANDLING
+export const getComments = async (stationId: number, setter: Function) => {
+    const commentsUrl = 'http://localhost:8001/get-station-comments';
+
+    const response = await fetch(`${commentsUrl}?stationId=${stationId}`);
+    const comments =  await response.json();
+    setter(comments);
+};
+

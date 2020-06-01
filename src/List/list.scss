@@ -29,8 +29,18 @@
       background-color: #37ffdc;
     }
 
+  }
+  .filter-list-container {
+    background: white;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    text-align: center;
+
     input {
       width: 90%;
+      font-size: 1.5rem;
+      color: black;
     }
   }
 }

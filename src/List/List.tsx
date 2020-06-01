@@ -2,19 +2,26 @@ import React, {useCallback, useState} from 'react';
 
 import './list.scss';
 import {MapboxGeoJSONFeature} from "mapbox-gl";
+import {getComments} from '../utils/helpers';
 import {CircularProgress} from "@material-ui/core";
 
 type Props = {
     data: any;
     setActiveFeature: Function;
     activeFeature: any | null;
+    setComments: any | null;
 }
 
 const List: React.FC<Props> = (props: Props) => {
     const [userInput, setUserInput] = useState<string | null>();
 
     const activateListItem = useCallback((f: MapboxGeoJSONFeature, e: any) => {
+        // used to highlight item list, pan map, open popup and feed data
         props.setActiveFeature(f);
+        // used to get comments specific to clicked station
+        if (f.properties && f.properties.id) {
+            return getComments(f.properties.id, props.setComments);
+        }
     }, [props]);
 
 
@@ -42,8 +49,10 @@ const List: React.FC<Props> = (props: Props) => {
 
     return (
         <div>
+            <div className={'filter-list-container'}>
+            <input onChange={filterList}/>
+            </div>
             <ul>
-                <input onChange={filterList}/>
                 {
                     props.data[0]
                         ?
