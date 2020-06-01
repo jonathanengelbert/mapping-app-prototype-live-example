@@ -1,14 +1,12 @@
 import React, {useState, useEffect, useRef} from 'react';
 import mapboxgl, {MapboxGeoJSONFeature} from 'mapbox-gl'
-
 import {mapboxStyles} from './mapboxStyles'
 import {mapUtils} from './mapUtils';
 import {popupModelExampleTwo} from './Popup/popupModels';
+import {Comment} from "./Popup/Comments/CommentList";
 import SidePopup from './Popup/SidePopup';
-
-import {isEmpty} from "../utils/helpers";
-
-import CircularProgress from "@material-ui/core/CircularProgress";
+import {isEmpty} from '../utils/helpers';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import './mapStyles.scss';
 
@@ -21,6 +19,7 @@ type Props = {
     layers: any,
     activeFeature: MapboxGeoJSONFeature | null,
     children?: any;
+    comments: Array<Comment> | null;
 }
 
 const Map: React.FC<Props> = (props: Props) => {
@@ -158,6 +157,7 @@ const Map: React.FC<Props> = (props: Props) => {
             {/*LOAD MAP ONLY AFTER "map" variable has been initialized. Might need to attach another listener here*/}
             <SidePopup
                 activeFeature={props.activeFeature}
+                comments={props.comments}
             />
             {
                 map ?
