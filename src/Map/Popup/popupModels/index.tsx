@@ -3,7 +3,8 @@
 
 import React from 'react';
 import CommentList from "../Comments";
-import { Comment} from "../Comments/CommentList";
+import {Comment} from "../Comments/CommentInterface";
+import PostCommentForm from "../Comments/PostCommentForm";
 
 import './popupModelStyling.scss';
 
@@ -22,12 +23,12 @@ export const popupModelExampleTwo = (p: any) => {
             </div>`);
 };
 
-
 // When designing popup models for SidePopup components, output should be
 // a component itself
 type ModelProps = {
     properties: any
-    comments: Array<Comment>| null;
+    comments: Array<Comment> | null;
+    setComments: Function;
 }
 
 export const PopupModelJSX = (props: ModelProps) => {
@@ -35,18 +36,21 @@ export const PopupModelJSX = (props: ModelProps) => {
     return (
         <div className="side-popup-content">
             <h1>{props.properties.long_name}</h1>
-
             {
                 props.comments && props.comments.length > 0
-                ?
+                    ?
                     <CommentList
-                      comments={props.comments}
+                        comments={props.comments}
                     />
-
-                :
+                    :
                     null
             }
 
+            <PostCommentForm
+                stationId={props.properties.id}
+                stationName={props.properties.long_name}
+                setComments={props.setComments}
+            />
         </div>
     );
 };

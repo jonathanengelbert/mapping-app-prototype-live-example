@@ -6,7 +6,7 @@ import List from "./List/List";
 import {isEmpty, getLayer} from "./utils/helpers";
 import {Feature} from 'geojson';
 import {MapboxGeoJSONFeature} from "mapbox-gl";
-import {Comment} from "./Map/Popup/Comments/CommentList";
+import {Comment} from "./Map/Popup/Comments/CommentInterface";
 
 // LAYER REQUESTS
 const stationsUrl = 'http://localhost:8001/geojson-all-stations';
@@ -20,7 +20,6 @@ function App() {
     // node is used to listen to clicks outside of divs, for example, remove highlight
     // from active list element by clicking anywhere outside of the list itself or map canvas
     const node = useRef<HTMLDivElement>(null);
-
 
     async function addLayer(endPoint: string, layerName: string) {
         const data = await getLayer(endPoint, layerName);
@@ -75,6 +74,7 @@ function App() {
                 <Map
                     layers={layers}
                     activeFeature={activeFeature}
+                    setComments={setComments}
                     comments={comments}
                 />
             </div>

@@ -1,14 +1,13 @@
 import React from 'react';
 import {PopupModelJSX} from "../popupModels";
-import {Comment} from "../Comments/CommentList";
+import {Comment} from "../Comments/CommentInterface";
 
 import './sidePopupStyles.scss';
-
-// TODO: implement useEffect to stop rerenderings based on props.activeFeature
 
 type Props = {
     activeFeature: any | null | undefined
     comments: Array<Comment> | null;
+    setComments: Function;
 }
 
 const SidePopup = (props: Props) => {
@@ -22,10 +21,12 @@ const SidePopup = (props: Props) => {
                             <PopupModelJSX
                                 properties={properties}
                                 comments={props.comments}
+                                setComments={props.setComments}
                             />
                             : null
                     }
                 </div>
+
             </div>
         )
     }
