@@ -3,7 +3,7 @@ import mapboxgl, {MapboxGeoJSONFeature} from 'mapbox-gl'
 import {mapboxStyles} from './mapboxStyles'
 import {mapUtils} from './mapUtils';
 import {popupModelExampleTwo} from './Popup/popupModels';
-import {Comment} from "./Popup/Comments/CommentList";
+import {Comment} from "./Popup/Comments/CommentInterface";
 import SidePopup from './Popup/SidePopup';
 import {isEmpty} from '../utils/helpers';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -20,6 +20,7 @@ type Props = {
     activeFeature: MapboxGeoJSONFeature | null,
     children?: any;
     comments: Array<Comment> | null;
+    setComments: Function;
 }
 
 const Map: React.FC<Props> = (props: Props) => {
@@ -158,6 +159,8 @@ const Map: React.FC<Props> = (props: Props) => {
             <SidePopup
                 activeFeature={props.activeFeature}
                 comments={props.comments}
+                setComments={props.setComments}
+
             />
             {
                 map ?

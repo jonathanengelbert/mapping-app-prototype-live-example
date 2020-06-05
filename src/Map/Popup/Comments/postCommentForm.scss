@@ -1,0 +1,50 @@
+.comment-form {
+  width: 50%;
+  min-height: 40%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  text-align: center;
+  overflow-y: scroll;
+
+  h3 {
+    color: #3f6eaf;
+  }
+
+  /* Style inputs, select elements and textareas */
+  input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  /* Style the label to display next to the inputs */
+  label {
+    padding: 12px 12px 12px 0;
+    margin-top: 10px;
+  }
+
+  /* Style the submit button */
+  input[type=submit] {
+    background-color: #3f6eaf;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 30px;
+
+    &:hover {
+      background-color: #4841af;
+      font-weight: bold;
+    }
+  }
+}
+
+

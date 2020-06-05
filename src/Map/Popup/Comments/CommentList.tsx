@@ -1,11 +1,7 @@
 import React from 'react';
 import './commentsStyle.scss';
+import {Comment} from "./CommentInterface";
 
-export type Comment = {
-    id: number;
-    author: string;
-    comment: string;
-}
 
 const CommentCard = (props: Comment) => {
     return (
