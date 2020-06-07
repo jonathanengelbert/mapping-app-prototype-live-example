@@ -4,7 +4,7 @@
 import React from 'react';
 import CommentList from "../Comments";
 import {Comment} from "../Comments/CommentInterface";
-import PostCommentForm from "../Comments/PostCommentForm";
+import CommentForm from "../Comments/CommentForm";
 
 import './popupModelStyling.scss';
 
@@ -32,7 +32,6 @@ type ModelProps = {
 }
 
 export const PopupModelJSX = (props: ModelProps) => {
-
     return (
         <div className="side-popup-content">
             <h1>{props.properties.long_name}</h1>
@@ -41,15 +40,18 @@ export const PopupModelJSX = (props: ModelProps) => {
                     ?
                     <CommentList
                         comments={props.comments}
+                        setComments={props.setComments}
+                        stationId={props.properties.id}
                     />
                     :
                     null
             }
 
-            <PostCommentForm
+            <CommentForm
                 stationId={props.properties.id}
                 stationName={props.properties.long_name}
                 setComments={props.setComments}
+                buttonName={'post-comment-button'}
             />
         </div>
     );

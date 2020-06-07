@@ -26,7 +26,6 @@ const SidePopup = (props: Props) => {
                             : null
                     }
                 </div>
-
             </div>
         )
     }

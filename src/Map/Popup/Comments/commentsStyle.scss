@@ -20,14 +20,25 @@ h3 {
   padding: 10px;
   margin: 5px;
 
-
   p {
     color: white;
     font-size: 1rem;
     padding: 0;
     margin: 0;
   }
-  p:nth-of-type(2n){
+
+  p:nth-of-type(2n) {
     font-size: .7rem;
   }
+
+  .update-comment-button {
+    width: 100%;
+    margin-top: 10px;
+    visibility: hidden;
+  }
+
+  &:hover .update-comment-button {
+    visibility: visible;
+  }
+
 }
