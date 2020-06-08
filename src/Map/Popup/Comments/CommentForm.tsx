@@ -26,15 +26,6 @@ const CommentForm = (props: CommentFormProps) => {
     const [openSnack, setOpenSnack] = React.useState(false);
     const [snackMessage, setSnackMessage] = React.useState('');
 
-    function handleChange(e: any) {
-        if (e.target.name === 'comment') {
-            setUserComment(e.target.value);
-        }
-
-        if (e.target.name === 'author') {
-            setUserAuthor(e.target.value);
-        }
-    }
 
     async function handlePostSubmit(e: React.FormEvent) {
         e.preventDefault();
@@ -51,7 +42,7 @@ const CommentForm = (props: CommentFormProps) => {
         }
     }
 
-    async function handleUpdateSubmit (e: React.FormEvent) {
+    async function handleUpdateSubmit(e: React.FormEvent) {
         e.preventDefault();
         if (userComment) {
             const requestOptions = {
@@ -65,7 +56,6 @@ const CommentForm = (props: CommentFormProps) => {
                 .catch((error) => console.log(error));
         }
     }
-
 
     function postTrigger(data: any) {
         setSnackMessage(data.message);
@@ -84,6 +74,16 @@ const CommentForm = (props: CommentFormProps) => {
         if (data.statusCode === '0' && props.stationId && props.setComments) {
             getComments(props.stationId, props.setComments);
             return handleModalClose();
+        }
+    }
+
+    function handleChange(e: any) {
+        if (e.target.name === 'comment') {
+            setUserComment(e.target.value);
+        }
+
+        if (e.target.name === 'author') {
+            setUserAuthor(e.target.value);
         }
     }
 
@@ -133,7 +133,7 @@ const CommentForm = (props: CommentFormProps) => {
     const UpdateCommentForm = (
         <div className={"comment-form"}>
             <h3>
-                Update your comment about station <em> {props.stationName}</em>
+                Update comment about station <em> {props.stationName}</em>
             </h3>
             <form onSubmit={handleUpdateSubmit}>
                 <label>
