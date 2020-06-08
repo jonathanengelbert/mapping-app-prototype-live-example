@@ -1,4 +1,3 @@
-
 // test if object is empty
 export function isEmpty(obj: Object) {
     for (let key in obj) {
@@ -23,7 +22,7 @@ export const getLayer: Function = async (url: string, id: string, setter: Functi
 };
 
 // COMMENTS HANDLING
-export const getComments = async (stationId: number, setter: Function) => {
+export const getComments = async (stationId: number | undefined, setter: any) => {
     const commentsUrl = 'http://localhost:8001/get-comments';
 
     const response = await fetch(`${commentsUrl}?stationId=${stationId}`);
@@ -31,3 +30,18 @@ export const getComments = async (stationId: number, setter: Function) => {
     setter(comments);
 };
 
+export const deleteOneComment = async (commentId: number) => {
+    let statusCode;
+    if (commentId) {
+        const requestOptions = {
+            method: 'DELETE',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({commentId: commentId})
+        };
+        await fetch('http://localhost:8001/delete-comment', requestOptions)
+            .then(response => response.json())
+            .then((data) => statusCode = data.statusCode)
+            .catch((error) => error);
+    }
+    return statusCode;
+};

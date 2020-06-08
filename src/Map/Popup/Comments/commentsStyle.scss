@@ -31,14 +31,34 @@ h3 {
     font-size: .7rem;
   }
 
-  .update-comment-button {
+  .update-comment-button, .delete-comment-button {
     width: 100%;
     margin-top: 10px;
     visibility: hidden;
   }
 
-  &:hover .update-comment-button {
+  &:hover .update-comment-button  {
     visibility: visible;
+    background-color: #3f6eaf;
+    border: 1px solid white;
+    padding: 10px;
+    color: white;
+
+    &:hover {
+      background-color: #0081ff;
+    }
+  }
+
+  &:hover .delete-comment-button  {
+    visibility: visible;
+    background-color: darkred;
+    border: 1px solid white;
+    padding: 10px;
+    color: white;
+
+    &:hover {
+      background-color: red;
+    }
   }
 
 }
