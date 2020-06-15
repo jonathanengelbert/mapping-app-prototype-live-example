@@ -5,6 +5,9 @@ import Snackbar from '@material-ui/core/Snackbar';
 
 import './postCommentForm.scss';
 
+// BASE API ENDPOINT
+const baseApiEndpoint = process.env.REACT_APP_MAPPING_API_BASE_URL;
+
 type CommentFormProps = {
     // buttonName defines class and bu
     // form, styling and label is applied to it
@@ -35,7 +38,7 @@ const CommentForm = (props: CommentFormProps) => {
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({stationId: props.stationId, comment: userComment, author: userAuthor})
             };
-            await fetch('http://localhost:8001/post-comment', requestOptions)
+            await fetch(`${baseApiEndpoint}/post-comment`, requestOptions)
                 .then(response => response.json())
                 .then(data => postTrigger(data))
                 .catch((error) => console.log(error));
@@ -50,7 +53,7 @@ const CommentForm = (props: CommentFormProps) => {
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({comment: userComment, commentId: props.commentId})
             };
-            await fetch('http://localhost:8001/update-comment', requestOptions)
+            await fetch(`${baseApiEndpoint}/update-comment`, requestOptions)
                 .then(response => response.json())
                 .then(data => updateTrigger(data))
                 .catch((error) => console.log(error));

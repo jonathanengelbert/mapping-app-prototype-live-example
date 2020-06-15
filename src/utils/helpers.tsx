@@ -1,3 +1,6 @@
+// BASE API ENDPOINT
+const baseApiEndpoint = process.env.REACT_APP_MAPPING_API_BASE_URL;
+
 // test if object is empty
 export function isEmpty(obj: Object) {
     for (let key in obj) {
@@ -23,7 +26,7 @@ export const getLayer: Function = async (url: string, id: string, setter: Functi
 
 // COMMENTS HANDLING
 export const getComments = async (stationId: number | undefined, setter: any) => {
-    const commentsUrl = 'http://localhost:8001/get-comments';
+    const commentsUrl = `${baseApiEndpoint}/get-comments`;
 
     const response = await fetch(`${commentsUrl}?stationId=${stationId}`);
     const comments =  await response.json();
@@ -38,7 +41,7 @@ export const deleteOneComment = async (commentId: number) => {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({commentId: commentId})
         };
-        await fetch('http://localhost:8001/delete-comment', requestOptions)
+        await fetch(`${baseApiEndpoint}/delete-comment`, requestOptions)
             .then(response => response.json())
             .then((data) => statusCode = data.statusCode)
             .catch((error) => error);
