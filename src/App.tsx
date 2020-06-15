@@ -8,10 +8,13 @@ import {Feature} from 'geojson';
 import {MapboxGeoJSONFeature} from "mapbox-gl";
 import {Comment} from "./Map/Popup/Comments/CommentInterface";
 
+// BASE API ENDPOINT
+const baseApiEndpoint = process.env.REACT_APP_MAPPING_API_BASE_URL;
+
 // LAYER REQUESTS
-const stationsUrl = 'http://localhost:8001/geojson-all-stations';
-const neighborhoodsUrl = 'http://localhost:8001/geojson-all-neighborhoods';
-// const homicidesUrl = 'http://localhost:8001/geojson-all-homicides';
+const stationsUrl = `${baseApiEndpoint}/geojson-all-stations`;
+const neighborhoodsUrl = `${baseApiEndpoint}/geojson-all-neighborhoods`;
+// const homicidesUrl = `${baseApiEndpoint}/geojson-all-homicides`;
 
 function App() {
     const [layers, setLayer] = useState<Array<Feature>>([]);

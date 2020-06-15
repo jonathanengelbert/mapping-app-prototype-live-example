@@ -35,7 +35,6 @@ const CommentCard =  (props: Comment) => {
 
 const CommentList = (props: Array<Comment> | any) => {
     useEffect(() => {
-        console.log('RENDERING');
     }, [props.comments]);
     return (
         <>
