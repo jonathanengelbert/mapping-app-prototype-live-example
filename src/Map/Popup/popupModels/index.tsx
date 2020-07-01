@@ -17,8 +17,8 @@ export const popupModelExampleTwo = (p: any) => {
     const longName = p.long_name;
     const url = `https://google.com/search?q=${longName}`;
     return (`<div class="popup-two">
-               <h2>SOME TITLE HERE</h2>
-               <p>This is station:</p>
+               <h2>${longName}</h2>
+               <p>More information about this station:</p>
                <a href="${url}" target="blank">${longName}</a> 
             </div>`);
 };
@@ -44,7 +44,7 @@ export const PopupModelJSX = (props: ModelProps) => {
                         stationId={props.properties.id}
                     />
                     :
-                    null
+                    <h3>No comments for this station yet. Be the first to post one!</h3>
             }
 
             <CommentForm

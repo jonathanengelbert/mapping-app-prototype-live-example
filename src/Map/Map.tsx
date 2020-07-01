@@ -13,7 +13,7 @@ import './mapStyles.scss';
 // layer style definitions
 const stationsStyle = new mapboxStyles.pointStyle('red').generateStyle();
 const homicideStyle = new mapboxStyles.pointStyle().generateStyle();
-const neighborhoodsStyle = new mapboxStyles.polygonStyle('#4ea1df', .2, 'white').generateStyle();
+const neighborhoodsStyle = new mapboxStyles.polygonStyle('#4ea1df', .2, 'black').generateStyle();
 
 type Props = {
     layers: any,
@@ -42,7 +42,7 @@ const Map: React.FC<Props> = (props: Props) => {
         const initializeMap = ({setMap, mapContainer}: any) => {
             const map = new mapboxgl.Map({
                 container: mapContainer.current,
-                style: mapboxStyles.darkStyle, // stylesheet location
+                style: mapboxStyles.streetsBasic, // stylesheet location
                 // style: mapboxStyles.customStyle, // stylesheet location
                 center: home,
                 zoom: 12

@@ -3,6 +3,7 @@
 // base styles
 const darkStyle = 'mapbox://styles/mapbox/dark-v10';
 const customStyle = 'mapbox://styles/jonathanengelbert/ck5egnrfz06cu1iq8x7hyy4uy';
+const streetsBasic = 'mapbox://styles/jonathanengelbert/ckc3lta3b0z281io3tl7vmk6i';
 
 // layer styles
 // TODO: add active color argument
@@ -29,7 +30,7 @@ class PointStyle {
             "circle-color": [
                 "case",
                 ['boolean', ['feature-state', 'hover'], false],
-                'white',
+                'blue',
                 this.color,
             ]
         }
@@ -42,7 +43,7 @@ class PolygonStyle {
     private readonly fillOpacity: number;
 
     constructor(fillColor?: string, fillOpacity?: number, fillOutlineColor?: string) {
-        this.fillColor = fillColor || "white";
+        this.fillColor = fillColor || "black";
         this.fillOutlineColor = fillOutlineColor || 'black';
         this.fillOpacity = fillOpacity || 0.5;
     }
@@ -60,6 +61,7 @@ export const mapboxStyles = {
     // baseStyles
     darkStyle: darkStyle,
     customStyle: customStyle,
+    streetsBasic: streetsBasic,
     // layerStyles
     pointStyle: PointStyle,
     polygonStyle: PolygonStyle,
